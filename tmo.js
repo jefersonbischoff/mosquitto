@@ -9,7 +9,7 @@
 			$('#connectbutton').click(function() {
 					
 				var p = document.createElement("p");
-				p.innerHTML = "Botão Conectar pressionado!!";
+				p.innerHTML = "Botão conectar pressionado";
 				$("#debug").append(p);
 				
 				
