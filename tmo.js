@@ -6,42 +6,43 @@
 			var _this = this;
 			mosq = new Mosquitto();
 
-			$('#connect-button').click(function() {
+			$('#connectbutton').click(function() {
 				
+				var Topic = $('#pubtopictext')[0].value;	
 				var p = document.createElement("p");
-				var topic = $('#pub-subscribe-text')[0].value;
-				p.innerHTML = "teste alteracao javascript";
+				p.innerHTML = Topic;
 				$("#debug").append(p);
+				
 				
 				return _this.connect();
 			});
-			$('#disconnect-button').click(function() {
+			$('#disconnectbutton').click(function() {
 				return _this.disconnect();
 			});
-			$('#subscribe-button').click(function() {
+			$('#subscribebutton').click(function() {
 				return _this.subscribe();
 			});
-			$('#unsubscribe-button').click(function() {
+			$('#unsubscribebutton').click(function() {
 				return _this.unsubscribe();
 			});
 			
 			
-			$('#liga-output').click(function() {
-				var payload = "L";  
-				var TopicPublish = $('#pub-topic-text')[0].value;				
+			$('#ligaoutput').click(function() {
+				var payload = "L";  			
+				var TopicPublish = $('#pubtopictext')[0].value;				
 				mosq.publish(TopicPublish, payload, 0);
 			});
 
 			
-			$('#desliga-output').click(function() {
-				var payload = "D";  
-				var TopicPublish = $('#pub-topic-text')[0].value;				
+			$('#desligaoutput').click(function() {
+				var payload = "D";  			
+				var TopicPublish = $('#pubtopictext')[0].value;				
 				mosq.publish(TopicPublish, payload, 0);
 			});
 
 			mosq.onconnect = function(rc){
 				var p = document.createElement("p");
-				var topic = $('#pub-subscribe-text')[0].value;
+				var topic = $('#pubsubscribetext')[0].value;
 				p.innerHTML = "Conectado ao Broker!";
 				$("#debug").append(p);
 				mosq.subscribe(topic, 0);
@@ -86,11 +87,11 @@
 			mosq.disconnect();
 		};
 		Page.prototype.subscribe = function(){
-			var topic = $('#sub-topic-text')[0].value;
+			var topic = $('#subtopictext')[0].value;
 			mosq.subscribe(topic, 0);
 		};
 		Page.prototype.unsubscribe = function(){
-			var topic = $('#sub-topic-text')[0].value;
+			var topic = $('#subtopictext')[0].value;
 			mosq.unsubscribe(topic);
 		};
 		
