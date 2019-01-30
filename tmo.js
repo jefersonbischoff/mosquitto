@@ -7,10 +7,9 @@
 			mosq = new Mosquitto();
 
 			$('#connectbutton').click(function() {
-				
-				var Topic = $('#pubtopictext')[0].value;	
+					
 				var p = document.createElement("p");
-				p.innerHTML = Topic;
+				p.innerHTML = "Botão Conectar pressionado";
 				$("#debug").append(p);
 				
 				
